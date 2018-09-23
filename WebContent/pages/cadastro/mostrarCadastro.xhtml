@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Transporte Particular</title>
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+
+	<h:outputText value="#{clienteBean.caption}" styleClass="titleStrong" />
+
+	<hr />
+
+	<h:panelGrid columns="2">
+
+		<h:outputLabel value="ID Person" />
+		<h:outputText value="#{clienteBean.cliente.idPessoa}" />
+
+		<h:outputLabel value="First Name" />
+		<h:outputText value="#{clienteBean.cliente.primeiroNome}" />
+
+		<h:outputLabel value="Laste Name" />
+		<h:outputText value="#{clienteBean.cliente.sobreNome}" />
+
+		<h:outputLabel value="Date of birth" />
+		<h:outputText value="#{clienteBean.cliente.dataNascimento}">
+			<f:convertDateTime dateStyle="default" />
+		</h:outputText>
+
+		<h:outputLabel value="Gender" />
+		<h:outputText
+			value="#{!empty clienteBean.cliente.sexo ? (clienteBean.cliente.sexo.toString().equals('M') ? 'Masculino' : 'Feminino') : ''}" />
+
+		<h:outputLabel value="CPF" />
+		<h:outputText value="#{clienteBean.cliente.CPF}" />
+		
+		
+		<h:outputLabel value="Cell Phone Number" />
+		<h:outputText value="#{clienteBean.cliente.numeroCelular}" />
+		
+		<h:outputLabel value="Email" />
+		<h:outputText value="#{clienteBean.cliente.email}" />
+		
+		<h:outputLabel value="ID Client" />
+		<h:outputText value="#{clienteBean.cliente.idCliente}" />
+		
+		<h:outputLabel value="Flag Greeting Card" />
+		<h:outputText value="#{clienteBean.cliente.bandeiraCartao}" />
+		
+		<h:outputLabel value="Number Card" />
+		<h:outputText value="#{clienteBean.cliente.numeroCartao}" />
+		
+	</h:panelGrid>
+
+	<hr />
+
+	<h:form>
+		<h:panelGrid>
+			<h:commandButton action="#{clienteBean.novel()}" value="Homepage" />
+		</h:panelGrid>
+	</h:form>
+
+</h:body>
+</html>

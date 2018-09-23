@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Transporte Particular</title>
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<h:outputStylesheet library="css" name="styles.css" />
+</h:head>
+<h:body>
+
+	<h:outputLabel value="Registration - Enter the data"
+		style="color:Navy;font-size: 2em;background-color:#DBDBDB;font-family: 'Futura Md BT';"
+		rendered="#{empty clienteBean.cliente.idPessoa}" />
+
+	<h:outputLabel value="Update - Enter the data"
+		style="color:Navy;font-size: 2em;background-color:#DBDBDB;font-family: 'Futura Md BT';"
+		rendered="#{!empty clienteBean.cliente.idPessoa}" />
+
+	<hr />
+
+	<h:form id="inputForm">
+
+		<h:messages styleClass="msgWarn2" />
+
+		<h:inputHidden value="#{clienteBean.cliente.idPessoa}" />
+		<h:inputHidden value="#{clienteBean.cliente.sexo}" />
+		<h:inputHidden value="#{clienteBean.cliente.idCliente}" />
+
+		<h:panelGrid columns="3">
+
+			<h:outputText rendered="#{!empty clienteBean.cliente.idPessoa}" />
+			<h:outputLabel value="ID Person"
+				rendered="#{!empty clienteBean.cliente.idPessoa}" />
+			<h:outputText value="#{clienteBean.cliente.idPessoa}"
+				rendered="#{!empty clienteBean.cliente.idPessoa}" />
+
+			<h:outputText value="*" styleClass="msgInfo" />
+			<h:outputLabel value="First Name" for="inputNome" />
+			<h:inputText id="inputNome"
+				value="#{clienteBean.cliente.primeiroNome}" label="Campo Nome"
+				maxlength="50" size="30" required="true" />
+
+			<h:outputText />
+			<h:outputLabel value="Last Name" for="inputSobreNome" />
+			<h:inputText value="#{clienteBean.cliente.sobreNome}"
+				label="Campo Sobre Nome" maxlength="50" size="30" required="true" />
+
+			<h:outputText />
+			<h:outputLabel value="Date Of Birth" for="inputData" />
+			<h:inputText id="inputData"
+				value="#{clienteBean.cliente.dataNascimento}"
+				label="Campo Data Nascimento" size="8">
+				<f:convertDateTime dateStyle="default" />
+			</h:inputText>
+
+			<h:outputText />
+			<h:outputLabel value="Gender" for="inputSexo" />
+			<h:panelGroup>
+				<h:selectOneRadio id="inputSexo" value="#{clienteBean.cliente.sexo}">
+					<f:selectItem itemLabel="masculino" itemValue="M" />
+					<f:selectItem itemLabel="feminino" itemValue="F" />
+				</h:selectOneRadio>
+			</h:panelGroup>
+
+			<h:outputText value="*" styleClass="msgInfo" />
+			<h:outputLabel value="CPF" for="inputCPF" />
+			<h:inputText id="inputCPF" value="#{clienteBean.cliente.CPF}"
+				label="Campo CPF" maxlength="50" size="30" required="true" />
+
+			<h:outputText value="*" styleClass="msgInfo" />
+			<h:outputLabel value="Cell Phone Number" for="inputNumeroCelular" />
+			<h:inputText id="inputNumeroCelular"
+				value="#{clienteBean.cliente.numeroCelular}"
+				label="Campo Numero Celular" maxlength="50" size="30"
+				required="true" />
+
+			<h:outputText />
+			<h:outputLabel value="Email" for="inputEmail" />
+			<h:inputText value="#{clienteBean.cliente.email}" label="Campo Email"
+				maxlength="50" size="30" required="true" />
+
+			<h:outputText rendered="#{!empty clienteBean.cliente.idCliente}" />
+			<h:outputLabel value="ID Client"
+				rendered="#{!empty clienteBean.cliente.idCliente}" />
+			<h:outputText value="#{clienteBean.cliente.idCliente}"
+				rendered="#{!empty clienteBean.cliente.idCliente}" />
+
+			<h:outputText />
+			<h:outputLabel value="Flag Greeting Card" for="inputBandeiraCartao" />
+			<h:inputText value="#{clienteBean.cliente.bandeiraCartao}"
+				label="Campo Bandeira Cartao" maxlength="50" size="30" required="true" />
+
+			<h:outputText />
+			<h:outputLabel value="Number Card" for="inputNumeroCartao" />
+			<h:inputText value="#{clienteBean.cliente.numeroCartao}"
+				label="Campo Numero Cartao" maxlength="50" size="30" required="true" />
+
+
+
+			<h:outputText />
+			<h:commandButton value="Confirm" action="confirmarCadastro" />
+			<h:outputText />
+
+		</h:panelGrid>
+
+		<h:outputText value="* Required field"
+			styleClass="msgInfo" />
+
+	</h:form>
+
+	<hr />
+
+	<h:form>
+		<h:panelGrid>
+			<h:commandButton action="/pages/consulta/consultar" value="Consult"
+				rendered="#{!empty clienteBean.cliente.idCliente}" />
+			<h:commandButton action="#{clienteBean.novel()}" value="Homepage" />
+		</h:panelGrid>
+	</h:form>
+
+</h:body>
+</html>
