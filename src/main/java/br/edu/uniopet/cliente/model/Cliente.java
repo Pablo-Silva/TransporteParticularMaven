@@ -1,12 +1,7 @@
 package br.edu.uniopet.cliente.model;
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 import br.edu.uniopet.pessoa.model.Pessoa;
 
@@ -42,6 +37,10 @@ public class Cliente extends Pessoa implements Serializable {
 	@SequenceGenerator(name = "sequence_generator", sequenceName = "CLIENTE_SEQUENCE")
 	@Column(name = "ID_CLIENTE")
 	private Integer idCliente;
+
+	@OneToOne
+	@JoinColumn(name = "ID_PESSOA" , referencedColumnName = "ID_PESSOA")
+	private Pessoa pessoa;
 
 	private String bandeiraCartao;
 
@@ -94,6 +93,14 @@ public class Cliente extends Pessoa implements Serializable {
 	 */
 	public void setNumeroCartao(Integer numeroCartao) {
 		this.numeroCartao = numeroCartao;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	/**

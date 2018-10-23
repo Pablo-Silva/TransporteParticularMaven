@@ -3,6 +3,13 @@
  */
 package br.edu.uniopet.viagem.model;
 
+import br.edu.uniopet.cliente.model.Cliente;
+import br.edu.uniopet.motorista.model.Motorista;
+import br.edu.uniopet.pessoa.model.Pessoa;
+import br.edu.uniopet.veiculo.model.Veiculo;
+import org.primefaces.validate.bean.ClientConstraint;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,6 +24,8 @@ import java.util.Date;
  * @version 1.0
  *
  */
+
+@Entity
 public class Viagem implements Serializable {
 	
 	/**
@@ -28,20 +37,31 @@ public class Viagem implements Serializable {
 	 * Instance variables
 	 */
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_generator")
+	@SequenceGenerator(name = "sequence_generator", sequenceName = "VIAGEM_SEQUENCE")
+	@Column(name = "ID_VIAGEM")
 	private Integer idViagem;
-	
-	private Integer idCliente;
-	
-	private Integer idMotorista;
-	
-	private Integer idVeiculo;
-	
+
+	@JoinColumn(name = "ID_CLIENTE", referencedColumnName = "ID_CLIENTE")
+	private Cliente cliente;
+
+	@JoinColumn(name = "ID_MOTORISTA", referencedColumnName = "ID_MOTORISTA")
+	private Motorista motorista;
+
+	@JoinColumn(name = "ID_VEICULO", referencedColumnName = "ID_VEICULO")
+	private Veiculo veiculo;
+
+	@Column(name = "ENDERECO_SAIDA")
 	private String enderecoSaida;
-	
+
+	@Column(name = "ENDERECO_CHEGADA")
 	private String enderecoChegada;
-	
+
+	@Column(name = "DATA_INICIO")
 	private Date dataInicio;
-	
+
+	@Column(name = "DATA_FIM")
 	private Date dataFim;
 	
 	/**
@@ -60,48 +80,6 @@ public class Viagem implements Serializable {
 	 */
 	public void setIdViagem(Integer idViagem) {
 		this.idViagem = idViagem;
-	}
-
-	/**
-	 * @return the idCliente
-	 */
-	public Integer getIdCliente() {
-		return idCliente;
-	}
-
-	/**
-	 * @param idCliente the idCliente to set
-	 */
-	public void setIdCliente(Integer idCliente) {
-		this.idCliente = idCliente;
-	}
-
-	/**
-	 * @return the idMotorista
-	 */
-	public Integer getIdMotorista() {
-		return idMotorista;
-	}
-
-	/**
-	 * @param idMotorista the idMotorista to set
-	 */
-	public void setIdMotorista(Integer idMotorista) {
-		this.idMotorista = idMotorista;
-	}
-
-	/**
-	 * @return the idVeiculo
-	 */
-	public Integer getIdVeiculo() {
-		return idVeiculo;
-	}
-
-	/**
-	 * @param idVeiculo the idVeiculo to set
-	 */
-	public void setIdVeiculo(Integer idVeiculo) {
-		this.idVeiculo = idVeiculo;
 	}
 
 	/**
@@ -159,7 +137,31 @@ public class Viagem implements Serializable {
 	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
 	}
-	
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Motorista getMotorista() {
+		return motorista;
+	}
+
+	public void setMotorista(Motorista motorista) {
+		this.motorista = motorista;
+	}
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
+
 	/**
 	 * Default constructor
 	 */
@@ -193,16 +195,10 @@ public class Viagem implements Serializable {
 		//Data processing
 		
 		output = String.format("\n ID Viagem: %s", idViagem != null ? idViagem.toString() : "");
+
+		output += String.format("\n Endereï¿½o Saida: %s", enderecoSaida != null ? enderecoSaida : "");
 		
-		output += String.format("\n ID Cliente: %s", idCliente != null ? idCliente.toString() : "");
-		
-		output += String.format("\n ID Motorista: %s", idMotorista != null ? idMotorista.toString() : "");
-		
-		output = String.format("\n ID Veiculo: %s", idVeiculo != null ? idVeiculo.toString() : "");
-		
-		output += String.format("\n Endereço Saida: %s", enderecoSaida != null ? enderecoSaida : "");
-		
-		output += String.format("\n Endereço Chegada: %s", enderecoChegada != null ? enderecoChegada : "");
+		output += String.format("\n Endereï¿½o Chegada: %s", enderecoChegada != null ? enderecoChegada : "");
 
 		output += String.format("\n Data Inicio: %s",
 				dataInicio != null ? new SimpleDateFormat("dd/MM/yyyy").format(this.dataInicio) : "");
@@ -229,9 +225,6 @@ public class Viagem implements Serializable {
 		result = prime * result + ((dataInicio == null) ? 0 : dataInicio.hashCode());
 		result = prime * result + ((enderecoChegada == null) ? 0 : enderecoChegada.hashCode());
 		result = prime * result + ((enderecoSaida == null) ? 0 : enderecoSaida.hashCode());
-		result = prime * result + ((idCliente == null) ? 0 : idCliente.hashCode());
-		result = prime * result + ((idMotorista == null) ? 0 : idMotorista.hashCode());
-		result = prime * result + ((idVeiculo == null) ? 0 : idVeiculo.hashCode());
 		result = prime * result + ((idViagem == null) ? 0 : idViagem.hashCode());
 		return result;
 	}
@@ -279,27 +272,7 @@ public class Viagem implements Serializable {
 		} else if (!enderecoSaida.equals(other.enderecoSaida)) {
 			return false;
 		}
-		if (idCliente == null) {
-			if (other.idCliente != null) {
-				return false;
-			}
-		} else if (!idCliente.equals(other.idCliente)) {
-			return false;
-		}
-		if (idMotorista == null) {
-			if (other.idMotorista != null) {
-				return false;
-			}
-		} else if (!idMotorista.equals(other.idMotorista)) {
-			return false;
-		}
-		if (idVeiculo == null) {
-			if (other.idVeiculo != null) {
-				return false;
-			}
-		} else if (!idVeiculo.equals(other.idVeiculo)) {
-			return false;
-		}
+		
 		if (idViagem == null) {
 			if (other.idViagem != null) {
 				return false;

@@ -3,6 +3,9 @@
  */
 package br.edu.uniopet.veiculo.model;
 
+import br.edu.uniopet.motorista.model.Motorista;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -15,6 +18,8 @@ import java.io.Serializable;
  * @version 1.0
  *
  */
+
+@Entity
 public class Veiculo implements Serializable {
 
 	/**
@@ -25,19 +30,30 @@ public class Veiculo implements Serializable {
 	/**
 	 * Instance variables
 	 */
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_generator")
+	@SequenceGenerator(name = "sequence_generator", sequenceName = "MOTORISTA_SEQUENCE")
+	@Column(name = "ID_VEICULO")
 	private Integer idVeiculo;
-	
-	private Integer idMotorista;
-	
+
+	@OneToMany
+	@JoinColumn(name = "ID_MOTORISTA", referencedColumnName = "ID_MOTORISTA")
+	private Motorista motorista;
+
+	@Column(name = "PLACA_VEICULO")
 	private String placaVeiculo;
-	
+
+	@Column(name = "MODELO_VEICULO")
 	private String modeloVeiculo;
-	
+
+	@Column(name = "MARCA_VEICULO")
 	private String marcaVeiculo;
-	
+
+	@Column(name = "COR_VEICULO")
 	private String corVeiculo;
-	
+
+	@Column(name = "ACENTOS_VEICULOS")
 	private Integer acentosVeiculos;
 	
 	/**
@@ -61,16 +77,6 @@ public class Veiculo implements Serializable {
 	/**
 	 * @return the idMotorista
 	 */
-	public Integer getIdMotorista() {
-		return idMotorista;
-	}
-
-	/**
-	 * @param idMotorista the idMotorista to set
-	 */
-	public void setIdMotorista(Integer idMotorista) {
-		this.idMotorista = idMotorista;
-	}
 
 	/**
 	 * @return the placaVeiculo
@@ -141,7 +147,15 @@ public class Veiculo implements Serializable {
 	public void setAcentosVeiculos(Integer acentosVeiculos) {
 		this.acentosVeiculos = acentosVeiculos;
 	}
-	
+
+	public Motorista getMotorista() {
+		return motorista;
+	}
+
+	public void setMotorista(Motorista motorista) {
+		this.motorista = motorista;
+	}
+
 	/**
 	 * Default constructor
 	 */
@@ -167,8 +181,6 @@ public class Veiculo implements Serializable {
 		// Data processing
 		
 		output = String.format("\n ID Veículo: %s", idVeiculo != null ? idVeiculo.toString() : "");
-		
-		output += String.format("\n ID Motorista: %s", idMotorista != null ? idMotorista.toString() : "");
 
 		output += String.format("\n Placa: %s", placaVeiculo != null ? placaVeiculo : "");
 		
@@ -194,7 +206,6 @@ public class Veiculo implements Serializable {
 		int result = 1;
 		result = prime * result + ((acentosVeiculos == null) ? 0 : acentosVeiculos.hashCode());
 		result = prime * result + ((corVeiculo == null) ? 0 : corVeiculo.hashCode());
-		result = prime * result + ((idMotorista == null) ? 0 : idMotorista.hashCode());
 		result = prime * result + ((idVeiculo == null) ? 0 : idVeiculo.hashCode());
 		result = prime * result + ((marcaVeiculo == null) ? 0 : marcaVeiculo.hashCode());
 		result = prime * result + ((modeloVeiculo == null) ? 0 : modeloVeiculo.hashCode());
@@ -231,13 +242,7 @@ public class Veiculo implements Serializable {
 		} else if (!corVeiculo.equals(other.corVeiculo)) {
 			return false;
 		}
-		if (idMotorista == null) {
-			if (other.idMotorista != null) {
-				return false;
-			}
-		} else if (!idMotorista.equals(other.idMotorista)) {
-			return false;
-		}
+
 		if (idVeiculo == null) {
 			if (other.idVeiculo != null) {
 				return false;

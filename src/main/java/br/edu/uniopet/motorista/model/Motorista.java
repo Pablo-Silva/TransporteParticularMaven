@@ -5,6 +5,8 @@ import java.util.Date;
 
 import br.edu.uniopet.pessoa.model.Pessoa;
 
+import javax.persistence.*;
+
 /**
  * 
  */
@@ -19,6 +21,8 @@ import br.edu.uniopet.pessoa.model.Pessoa;
  * @version 1.0
  *
  */
+
+@Entity
 public class Motorista extends Pessoa implements Serializable {
 
 	/**
@@ -30,12 +34,23 @@ public class Motorista extends Pessoa implements Serializable {
 	 * Instance variables
 	 */
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_generator")
+	@SequenceGenerator(name = "sequence_generator", sequenceName = "MOTORISTA_SEQUENCE")
+	@Column(name = "ID_MOTORISTA")
 	private Integer idMotorista;
 
+	@OneToOne
+	@JoinColumn(name = "ID_PESSOA", referencedColumnName = "ID_PESSOA")
+	private Pessoa pessoa;
+
+	@Column(name = "DATA_CADASTRO")
 	private Date dataCadastro;
 
+	@Column(name = "STATUS_MOTORISTA")
 	private Character statusMotorista;
 
+	@Column(name = "CARTEIRA_MOTORISTA")
 	private String carteiraMotorista;
 
 	/**
@@ -100,6 +115,14 @@ public class Motorista extends Pessoa implements Serializable {
 	 */
 	public void setCarteiraMotorista(String carteiraMotorista) {
 		this.carteiraMotorista = carteiraMotorista;
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	/**
