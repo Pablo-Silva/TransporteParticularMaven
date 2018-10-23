@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.PreparedStatement;
 import br.edu.uniopet.ConnectionFactory;
-import br.edu.uniopet.pessoa.vo.Pessoa;
+import br.edu.uniopet.pessoa.model.Pessoa;
 
 
 /**

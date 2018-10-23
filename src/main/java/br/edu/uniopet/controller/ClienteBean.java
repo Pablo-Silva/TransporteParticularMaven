@@ -8,8 +8,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-import br.edu.uniopet.cliente.vo.Cliente;
-import br.edu.uniopet.model.ManutencaoCliente;
+import br.edu.uniopet.cliente.model.Cliente;
+import br.edu.uniopet.manutencao.ManutencaoCliente;
 
 import java.io.Serializable;
 import java.util.List;

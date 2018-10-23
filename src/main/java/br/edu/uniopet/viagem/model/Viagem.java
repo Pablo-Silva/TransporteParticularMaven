@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.edu.uniopet.viagem.vo;
+package br.edu.uniopet.viagem.model;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

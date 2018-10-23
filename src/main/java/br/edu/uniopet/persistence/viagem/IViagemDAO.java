@@ -5,7 +5,7 @@ package br.edu.uniopet.persistence.viagem;
 
 import java.util.List;
 
-import br.edu.uniopet.viagem.vo.Viagem;
+import br.edu.uniopet.viagem.model.Viagem;
 
 /**
  * @author Pablo

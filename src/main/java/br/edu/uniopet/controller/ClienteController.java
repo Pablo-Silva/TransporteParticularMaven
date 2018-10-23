@@ -5,8 +5,8 @@ package br.edu.uniopet.controller;
 
 import java.util.List;
 
-import br.edu.uniopet.cliente.vo.Cliente;
-import br.edu.uniopet.model.ManutencaoCliente;
+import br.edu.uniopet.cliente.model.Cliente;
+import br.edu.uniopet.manutencao.ManutencaoCliente;
 
 /**
  * @author Pablo

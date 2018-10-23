@@ -1,7 +1,14 @@
-package br.edu.uniopet.pessoa.vo;
+package br.edu.uniopet.pessoa.model;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 /**
  * 
@@ -17,6 +24,8 @@ import java.util.Date;
  * @version 1.0
  *
  */
+
+@Entity
 public class Pessoa implements Serializable, Cloneable {
 
 	/**
@@ -28,20 +37,31 @@ public class Pessoa implements Serializable, Cloneable {
 	 * Instance variables
 	 */
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_generator")
+	@SequenceGenerator(name = "sequence_generator", sequenceName = "PESSOA_SEQUENCE")
+	@Column(name = "ID_PESSOA")
 	private Integer idPessoa;
 
+	@Column(name = "PRIMEIRO_NOME")
 	private String primeiroNome;
 
+	@Column(name = "SOBRE_NOME")
 	private String sobreNome;
 
+	@Column(name = "DATA_NASCIMENTO")
 	private Date dataNascimento;
 
+	@Column(name = "SEXO")
 	private Character sexo;
 
+	@Column(name = "CPF")
 	private String CPF;
 
+	@Column(name = "NUMERO_CELULAR")
 	private String numeroCelular;
 
+	@Column(name = "EMAIL")
 	private String email;
 
 	/**

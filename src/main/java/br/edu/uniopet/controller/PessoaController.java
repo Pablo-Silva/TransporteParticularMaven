@@ -4,8 +4,9 @@
 package br.edu.uniopet.controller;
 
 import java.util.List;
-import br.edu.uniopet.model.ManutencaoPessoa;
-import br.edu.uniopet.pessoa.vo.Pessoa;
+
+import br.edu.uniopet.manutencao.ManutencaoPessoa;
+import br.edu.uniopet.pessoa.model.Pessoa;
 
 /**
  * @author Shooting Stars

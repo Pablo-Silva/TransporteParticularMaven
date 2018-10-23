@@ -1,9 +1,9 @@
-package br.edu.uniopet.vo.motorista;
+package br.edu.uniopet.motorista.model;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import br.edu.uniopet.pessoa.vo.Pessoa;
+import br.edu.uniopet.pessoa.model.Pessoa;
 
 /**
  * 

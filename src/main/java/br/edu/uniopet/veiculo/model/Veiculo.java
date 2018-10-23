@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.edu.uniopet.veiculo.vo;
+package br.edu.uniopet.veiculo.model;
 
 import java.io.Serializable;
 

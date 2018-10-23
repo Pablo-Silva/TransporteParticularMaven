@@ -5,7 +5,7 @@ package br.edu.uniopet.persistence.pessoa;
 
 import java.util.List;
 
-import br.edu.uniopet.pessoa.vo.Pessoa;
+import br.edu.uniopet.pessoa.model.Pessoa;
 
 /**
  * @author Pablo

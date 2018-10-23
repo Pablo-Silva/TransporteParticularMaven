@@ -5,8 +5,8 @@ package br.edu.uniopet.persistence.motorista;
 
 import java.util.List;
 
+import br.edu.uniopet.motorista.model.Motorista;
 import br.edu.uniopet.persistence.pessoa.PessoaService;
-import br.edu.uniopet.vo.motorista.Motorista;
 
 /**
  * @author Pablo

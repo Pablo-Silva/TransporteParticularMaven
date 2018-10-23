@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.uniopet.ConnectionFactory;
+import br.edu.uniopet.motorista.model.Motorista;
 import br.edu.uniopet.persistence.pessoa.PessoaService;
-import br.edu.uniopet.vo.motorista.Motorista;
 
 /**
  * @author Pablo

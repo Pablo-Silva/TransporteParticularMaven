@@ -1,7 +1,14 @@
-package br.edu.uniopet.cliente.vo;
+package br.edu.uniopet.cliente.model;
 import java.io.Serializable;
 
-import br.edu.uniopet.pessoa.vo.Pessoa;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
+import br.edu.uniopet.pessoa.model.Pessoa;
 
 /**
  * 
@@ -17,6 +24,8 @@ import br.edu.uniopet.pessoa.vo.Pessoa;
  * @version 1.0
  *
  */
+
+@Entity
 public class Cliente extends Pessoa implements Serializable {
 
 	/**
@@ -28,6 +37,10 @@ public class Cliente extends Pessoa implements Serializable {
 	 * Instance variables
 	 */
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "sequence_generator")
+	@SequenceGenerator(name = "sequence_generator", sequenceName = "CLIENTE_SEQUENCE")
+	@Column(name = "ID_CLIENTE")
 	private Integer idCliente;
 
 	private String bandeiraCartao;

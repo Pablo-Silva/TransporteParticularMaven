@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.uniopet.ConnectionFactory;
-
-import br.edu.uniopet.viagem.vo.Viagem;
+import br.edu.uniopet.viagem.model.Viagem;
 
 /**
  * @author Pablo

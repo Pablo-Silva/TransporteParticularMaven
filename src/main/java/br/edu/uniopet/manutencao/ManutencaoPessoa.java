@@ -1,12 +1,12 @@
 /**
  * 
  */
-package br.edu.uniopet.model;
+package br.edu.uniopet.manutencao;
 
 import java.util.List;
 
 import br.edu.uniopet.persistence.pessoa.PessoaService;
-import br.edu.uniopet.pessoa.vo.Pessoa;
+import br.edu.uniopet.pessoa.model.Pessoa;
 
 /**
  * @author Shooting Stars

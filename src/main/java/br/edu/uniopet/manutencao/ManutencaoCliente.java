@@ -1,11 +1,11 @@
 /**
  * 
  */
-package br.edu.uniopet.model;
+package br.edu.uniopet.manutencao;
 
 import java.util.List;
 
-import br.edu.uniopet.cliente.vo.Cliente;
+import br.edu.uniopet.cliente.model.Cliente;
 import br.edu.uniopet.persistence.cliente.ClienteService;
 
 /**

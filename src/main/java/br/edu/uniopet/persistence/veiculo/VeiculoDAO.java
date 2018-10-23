@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.uniopet.ConnectionFactory;
-
-import br.edu.uniopet.veiculo.vo.Veiculo;
+import br.edu.uniopet.veiculo.model.Veiculo;
 
 /**
  * @author Pablo

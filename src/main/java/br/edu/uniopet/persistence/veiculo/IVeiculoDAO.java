@@ -5,7 +5,7 @@ package br.edu.uniopet.persistence.veiculo;
 
 import java.util.List;
 
-import br.edu.uniopet.veiculo.vo.Veiculo;
+import br.edu.uniopet.veiculo.model.Veiculo;
 
 
 /**
